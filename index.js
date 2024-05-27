@@ -8,10 +8,12 @@ async function displayEntries() {
     });
    
     const toJson = await fetchData.json();
+    console.log(toJson);
 
-    const entries = toJson.items || [];
+    // const entries = toJson.items || [];
+    // console.log(entries);
     
-    entries.forEach((entry, index) => {
+    toJson.forEach((entry, index) => {
       const list = document.createElement('div');
       list.className = 'list';
 
@@ -22,14 +24,13 @@ async function displayEntries() {
 
       const contents = document.createElement('span');
       contents.innerText = `
-        ${entry.title} 
+        ${entry.title}
         ${entry.content}
       `;
 
       const details = document.createElement('span');
       details.innerText = `
         ${entry.created_at}
-        ${entry.password}
       `;
       
       const delButton = document.createElement('button');
@@ -68,10 +69,10 @@ async function addNew() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            "writer" : "작성자",
-            "content" : "내용",
-            "title" : "제목",
-            "password" : "비밀번호"
+            "writer" : writer,
+            "content" : content,
+            "title" : title,
+            "password" : password
         }),
       });
     
@@ -82,7 +83,7 @@ async function addNew() {
       document.getElementById('content').value = '';
 
   
-      displayEntries();
+      // displayEntries();
     } catch (error) {
       console.error('Error:', error);
     }
