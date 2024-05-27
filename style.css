@@ -1,0 +1,63 @@
+@import url("https://fastly.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css");
+@font-face {
+  font-family: 'Freesentation-9Black';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
+  font-weight: bolder;
+  font-style: normal;
+}
+
+body {
+  font-family: "Galmuri9", sans-serif;
+  background-image: url(./image/white-crumpled-paper-texture-background.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+h1 {
+  font-family: 'Freesentation-9Black';
+  text-align: center;
+  font-size: 6vw;
+  line-height: 1;
+  margin-bottom: 5%;
+}
+
+h3 {
+  text-align: center;
+  letter-spacing: 10px;
+  margin-top: 2%;
+  margin-bottom: 3%;
+}
+
+footer {
+  text-align: center;
+}
+
+#user {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+  margin: auto;
+}
+
+input {
+  margin-left: 5px;
+  margin-right: 15px;
+  margin-bottom: 5px;
+  height: 25px;
+}
+
+#userHeader {
+  margin-bottom: 15px;
+}
+
+#content {
+  width: 92%;
+  height: 120px;
+  margin-bottom: 15px;
+}
+
+#addBtn {
+  margin: auto;
+  display: block;
+}

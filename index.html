@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>정권's 방명록</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1>JUNGKWON<br>
+    GUESTBOOK</h1>
+    
+  <main>
+    <div id="add">
+      <h3>*************** 방명록을 남겨주세요 ***************</h3>
+      <div id="user">
+        <div id="userHeader"> 
+          작성자
+          <input type="text" placeholder="작성자" id="writer">
+          비밀번호
+          <input type="text" placeholder="비밀번호" id="password"></div>
+        <input type="text" placeholder="제목" id="title">
+        <input type="text" placeholder="내용" id="content">
+        <div id="addBtn">
+          <button onclick="addNew()">등록</button>
+        </div>
+      </div>
+      <h3>*********************************************<br>
+        *********************************************</h3>
+    </div>
+
+    <div id="list">
+      <div id="listItem"></div>
+      <h3>*********************************************</h3>
+    </div>
+  </main>
+
+  <footer>
+    <img src="./image/barcode.png">
+  </footer>
+  <script src="./index.js"></script>
+</body>
+</html>
