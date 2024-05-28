@@ -28,21 +28,29 @@ async function displayEntries() {
       info.innerText = `
         ${entry.title}
         ${entry.content}
+        by ${entry.writer}
         ${entry.created_at}
       `;
       
       const delButton = document.createElement('button');
       delButton.className = 'delBtn';
       delButton.innerText = '삭제';
+
       delButton.addEventListener('click', async () => {
-        const inputPassword = prompt('비밀번호를 입력하세요:');
-        if (inputPassword === entry.password) {
-          await fetch(`${baseURL}/${entry.id}/`, { method: "DELETE" });
-          displayEntries();
-        } else {
-          alert('비밀번호가 틀렸습니다.');
-          // console.log(`입력된 비밀번호: ${inputPassword}, 저장된 비밀번호: ${entry.password}`);
-        }
+          const inputPassword = prompt('비밀번호를 입력하세요:')
+          try {await fetch(`${baseURL}${entry.id}/`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "password" : inputPassword,
+            }),
+          });
+          displayEntries();}
+          catch(error) {
+            console.log(error);
+          }
       });
 
       list.appendChild(num);
