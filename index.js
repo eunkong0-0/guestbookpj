@@ -12,6 +12,7 @@ async function displayEntries() {
 
     // const entries = toJson.items || [];
     // console.log(entries);
+
     
     toJson.forEach((entry, index) => {
       const list = document.createElement('div');
@@ -22,42 +23,41 @@ async function displayEntries() {
         ${index + 1}
       `;
 
-      const contents = document.createElement('span');
-      contents.innerText = `
+      const info = document.createElement('span');
+      info.className = 'info';
+      info.innerText = `
         ${entry.title}
         ${entry.content}
-      `;
-
-      const details = document.createElement('span');
-      details.innerText = `
         ${entry.created_at}
       `;
       
       const delButton = document.createElement('button');
+      delButton.className = 'delBtn';
       delButton.innerText = '삭제';
       delButton.addEventListener('click', async () => {
-        if (prompt('비밀번호를 입력하세요:') === entry.password) {
-          await fetch(`${baseURL}/${entry.id}`, { method: "DELETE" });
+        const inputPassword = prompt('비밀번호를 입력하세요:');
+        if (inputPassword === entry.password) {
+          await fetch(`${baseURL}/${entry.id}/`, { method: "DELETE" });
           displayEntries();
         } else {
           alert('비밀번호가 틀렸습니다.');
+          // console.log(`입력된 비밀번호: ${inputPassword}, 저장된 비밀번호: ${entry.password}`);
         }
       });
 
-      
-      details.appendChild(delButton);
-
       list.appendChild(num);
-      list.appendChild(contents);
-      list.appendChild(details);
+      list.appendChild(info);
+      list.appendChild(delButton);
 
       container.appendChild(list);
+      container.insertBefore(list, container.firstElementChild);
     });
 }
 
 async function addNew() {
   const writer = document.getElementById('writer').value;
   const password = document.getElementById('password').value;
+  // console.log("@@@@@@@@@@@@@@@@@@"+password);
   const title = document.getElementById('title').value;
   const content = document.getElementById('content').value;
 
@@ -72,17 +72,16 @@ async function addNew() {
             "writer" : writer,
             "content" : content,
             "title" : title,
-            "password" : password
+            "password" : password,
         }),
       });
-    
-      
-      document.getElementById('writer').value = '';
-      document.getElementById('password').value = '';
-      document.getElementById('title').value = '';
-      document.getElementById('content').value = '';
 
-  
+      // document.getElementById('writer').value = '';
+      // document.getElementById('password').value = '';
+      // document.getElementById('title').value = '';
+      // document.getElementById('content').value = '';
+
+
       // displayEntries();
     } catch (error) {
       console.error('Error:', error);
@@ -90,6 +89,8 @@ async function addNew() {
   } else {
     alert('모든 항목을 입력해주세요.');
   }
+  
+  location.href = location.href;
 }
 
 window.onload = function() {

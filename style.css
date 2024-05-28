@@ -61,3 +61,22 @@ input {
   margin: auto;
   display: block;
 }
+
+.list {
+  width: 63%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: dotted;
+}
+
+.delBtn {
+  height: 30px;
+}
+
+.info {
+  line-height: 40px;
+  margin-right: 40%;
+}
